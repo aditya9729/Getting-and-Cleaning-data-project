@@ -1,0 +1,101 @@
+﻿##Author:Aditya Gudal
+For further queries please contact:adityagudal29@gmail.com
+
+The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
+
+Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
+
+Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
+
+These signals were used to estimate variables of the feature vector for each pattern:  
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+
+Some changes made to the code
+
+Columns in merged or binded Xdataset(X_Training + X_Test)
+Columns or fetures with respect to time and frequency,mean and standard deviation was taken
+'std'=standard deviation
+'freq'=frequency
+'Acc'=accelerometer
+'Gyro'=gyroscope
+COLUMN CHANGES: With respect to time
+                'V1'='time.Body.Acc.X.mean'             -These are the respective Body acceleration readings with respect to the X,Y,Z
+                'V2'='time.Body.Acc.Y.mean'              coordinates and their mean and standard deviation along each dimension ,Unit-m/s^2  
+                'V3'='time.Body.Acc.Z.mean'
+                'V4'='time.Body.Acc.X.std
+                'V5'='time.Body.Acc.Y.std'
+                'V6'='time.Body.Acc.Z.std'
+                'V41'='time.Gravity.Acc.X.mean'          -These are the respective Gravity acceleration readings with respect to the X,Y,Z  
+                'V42'='time.Gravity.Acc.Y.mean'           coordinates and their mean and standard deviation along each dimension ,Unit-m/s^2
+                'V43'='time.Gravity.Acc.Z.mean'           gravity=9.8meter/(second)^2
+                'V44'='time.Gravity.Acc.X.std'
+                'V45'='time.Gravity.Acc.Y.std'
+                'V46'='time.Gravity.Acc.Z.std'
+                'V81'='time.Body.Jerk.Acc.X.mean'        -These are the respective Jerk Body acceleration readings with respect to the X,Y,Z
+                                                         coordinates and their mean and standard deviation along each dimension ,Unit-m/s^2
+                'V82'='time.Body.Jerk.Acc.Y.mean'
+                'V83'='time.Body.Jerk.Acc.Z.mean'
+                'V84'='time.Body.Jerk.Acc.X.std'
+                'V85'='time.Body.Jerk.Acc.Y.std'
+                'V86'='time.Body.Jerk.Acc.Z.std'
+                'V121'='time.Body.Gyro.X.mean'           -These are the respective Gyroscopic readings for x,y,z dimensions,with their mean and
+                                                            along each dimension.Measure of angular velocity in rad/s
+                'V122'='time.Body.Gyro.Y.mean'
+                'V123'='time.Body.Gyro.Z.mean'
+                'V124'='time.Body.Gyro.X.std'
+                'V125'='time.Body.Gyro.Y.std
+                'V126'='time.Body.Gyro.Z.std
+                'V161'='time.Body.Jerk.Gyro.X.mean'
+                'V162'='time.Body.Jerk.Gyro.Y.mean'
+                'V163'='time.Body.Jerk.Gyro.Z.mean'
+                'V164'='time.Body.Jerk.Gyro.X.std'
+                'V165'='time.Body.Jerk.Gyro.Y.std
+                'V166'='time.Body.Jerk.Gyro.Z.std       
+                'V201'='time.Body.Acc.Mag.mean
+                'V202'='time.Body.Acc.Mag.std 
+                'V214'='time.Gravity.Acc.Mag.mean'
+                'V215'='time.Gravity.Acc.Mag.std'
+                'V227'='time.Body.Jerk.Acc.Mag.mean'
+                'V228'='time.Body.Jerk.Acc.Mag.std'
+                'V253'='time.Body.Jerk.Gyro.Mag.mean'
+                'V254'='time.Body.Jerk.Gyro.Mag.std'
+COLUMNS DEPENDING ON frequency: 
+                'V266'='freq.Body.Acc.X.mean'
+                'V267'='freq.Body.Acc.Y.mean'
+                'V268'='freq.Body.Acc.Z.mean'
+                'V269'='freq.Body.Acc.X.std'
+                'V270'='freq.Body.Acc.Y.std
+                'V271'='freq.Body.Acc.Z.std'
+                'V345'='freq.Body.Jerk.Acc.X.mean'
+                'V346'='freq.Body.Jerk.Acc.Y.mean'
+                'V347'='freq.Body.Jerk.Acc.Z.mean'
+                'V348'='freq.Body.Jerk.Acc.X.std
+                'V349'='freq.Body.Jerk.Acc.Y.std       
+                'V350'='freq.Body.Jerk.Acc.Z.std
+                'V424'='freq.Body.Gyro.X.mean'
+                'V425'='freq.Body.Gyro.Y.mean'
+                'V426'='freq.Body.Gyro.Z.mean'
+                'V427'='freq.Body.Gyro.X.std'
+                'V428'='freq.Body.Gyro.Y.std
+                'V429'='freq.Body.Gyro.Z.std'
+                'V503'='freq.Body.Acc.Mag.mean'
+                'V504'='freq.Body.Acc.Mag.std'
+                'V516'='freq.Body.Jerk.Acc.Mag.mean'
+                'V517'='freq.Body.Jerk.Acc.Mag.std
+                'V529'='freq.Body.Gyro.Mag.mean'       
+                'V530'='freq.Body.Gyro.Mag.std'
+                'V542'='freq.Body.Gyro.Jerk.Mag.mean'
+                'V543'='freq.Body.Gyro.Jerk.Mag.std'
+                
+REST OF THE COLUMNS OF X_TEST AND X_Training ARE EXCLUDED AS ONLY STD AND MEAN COLUMNS ARE NEEDED
+
+
+For Y column vector we replace:
+                'V1'='activity.names'
+
+For subject column vector we replace:
+                'V1'='volunteers.under.study'
+
+Note:subject column is column 1
+Y column or activity or label column is column 2
+rest of the columns are X columns or the feature vectors
